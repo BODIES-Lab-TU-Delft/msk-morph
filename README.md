@@ -197,7 +197,7 @@ MSK-Morph/
       - `SettingsModelWarper_StationDefinedTemplateModel_HipJoints.xml`
 
   
-2. **Configure the pipeline** by editing `msk_morph.py`:
+2. **Configure the pipeline** by editing [`msk_morph.py`](./msk_morph/msk-morph.py):
    - Set `PARTICIPANT_IDS` with your participant IDs.
    - Adjust directory paths if needed.
    - Configure registration parameters.
@@ -398,7 +398,7 @@ To obtain the morphed LD-MSK model, follow these steps in OpenSim Creator's Mode
 4. Click the `Export Warped Model` button. 
 5. Save the model under your chosen name (recommended directory: `../participant_data/{participant_id}`).
 
-Note: Morphed LD-MSK models are saved by default in OpenSim Creator with hard-coded absolute paths to the bone geometry meshes (`morphed_geometry` folder). To prevent any issues with loading the geometries, run the script `./participant_data/convert_osim_paths_to_rel.py` to replace all absolute paths with relative ones, and keep the model and corresponding `morphed_geometry` folder always in the same directory.
+Note: Morphed LD-MSK models are saved by default in OpenSim Creator with hard-coded absolute paths to the bone geometry meshes (`morphed_geometry` folder). To prevent any issues with loading the geometries, run the script [`convert_osim_paths_to_rel.py`](./participant_data/convert_osim_paths_to_rel.py) to replace all absolute paths with relative ones, and keep the model and corresponding `morphed_geometry` folder always in the same directory.
 
 ### Posing the morphed LD-MSK model onto the target data
 

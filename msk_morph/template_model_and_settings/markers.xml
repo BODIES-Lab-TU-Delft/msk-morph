@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSimDocument Version="40000">
+   <MarkerSet name="markerset">
+      <objects>
+         <Marker name="rASIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>0.0, 0.940000, 0.120833</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="lASIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>0.0, 0.940000, -0.120833</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="midASIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>0.0, 0.940000, 0.0</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="rPSIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.137926, 0.956807, 0.040577</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="lPSIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.137926, 0.956807, -0.040577</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="midPSIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.137926, 0.956807, 0.000000</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="mid_midASISmidPSIS">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.068963   0.9484035  0.0</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="rHJC">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.056240, 0.861526, 0.077217</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="rFLE">
+            <socket_parent_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</socket_parent_frame>
+            <location>-0.058419, 0.455208, 0.114293</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="rFME">
+            <socket_parent_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</socket_parent_frame>
+            <location>-0.049446, 0.458969, 0.038962</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="midrFE">
+            <socket_parent_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</socket_parent_frame>
+            <location>-0.053933, 0.457088, 0.076628</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="lHJC">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.056240, 0.861526, -0.077217</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="lFLE">
+            <socket_parent_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</socket_parent_frame>
+            <location>-0.058419, 0.455208, -0.114293</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="lFME">
+            <socket_parent_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</socket_parent_frame>
+            <location>-0.049446, 0.458969, -0.038962</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="midlFE">
+            <socket_parent_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</socket_parent_frame>
+            <location>-0.053933, 0.457088, -0.076628</location>
+            <fixed>true</fixed>
+         </Marker>
+         <Marker name="midHJC">
+            <socket_parent_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</socket_parent_frame>
+            <location>-0.05624   0.861526  0.0</location>
+            <fixed>true</fixed>
+         </Marker>
+      </objects>
+   </MarkerSet>
+</OpenSimDocument>

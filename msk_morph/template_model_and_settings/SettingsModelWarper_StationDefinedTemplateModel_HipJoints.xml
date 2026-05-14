@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSimDocument Version="40600">
+	<ModelWarperV3Document name="modelwarperv3document">
+		<!--List of components that this component owns and serializes.-->
+		<components>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_0">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Pelvis_r Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the affine scaling part of the TPS warp to the output. This can be useful/necessary for visually inspecting the difference between the non-affine scaling components and the affine parts.-->
+				<apply_affine_scale>true</apply_affine_scale>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Enable/disable applying the non-affine (i.e. the 'warp-ey part') of the TPS warp to the output.-->
+				<apply_non_affine_warp>true</apply_non_affine_warp>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/pelvis/pelvis_physicalbodyoffset/pelvis_r_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_1">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Pelvis_l Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the affine scaling part of the TPS warp to the output. This can be useful/necessary for visually inspecting the difference between the non-affine scaling components and the affine parts.-->
+				<apply_affine_scale>true</apply_affine_scale>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Enable/disable applying the non-affine (i.e. the 'warp-ey part') of the TPS warp to the output.-->
+				<apply_non_affine_warp>true</apply_non_affine_warp>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/pelvis/pelvis_physicalbodyoffset/pelvis_l_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_2">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Sacrum Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\sacrum_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\sacrum_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/pelvis/pelvis_physicalbodyoffset/sacrum_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineStationsScalingStep name="thinplatesplinestationsscalingstep_0">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Pelvis Stations</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_stations_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_stations_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the affine scaling part of the TPS warp to the output. This can be useful/necessary for visually inspecting the difference between the non-affine scaling components and the affine parts.-->
+				<apply_affine_scale>true</apply_affine_scale>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Enable/disable applying the non-affine (i.e. the 'warp-ey part') of the TPS warp to the output.-->
+				<apply_non_affine_warp>true</apply_non_affine_warp>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find stations in the source model that should be warped by this scaling step.-->
+				<stations>/bodyset/pelvis/rASIS_in_pelvis_physicalbodyoffset /bodyset/pelvis/midASIS_in_pelvis_physicalbodyoffset /bodyset/pelvis/midPSIS_in_pelvis_physicalbodyoffset /bodyset/pelvis/hip_r_joint_in_pelvis /bodyset/pelvis/hip_l_joint_in_pelvis /bodyset/pelvis/lASIS_in_pelvis_physicalbodyoffset /bodyset/pelvis/rPSIS_in_pelvis_physicalbodyoffset /bodyset/pelvis/lPSIS_in_pelvis_physicalbodyoffset</stations>
+			</ThinPlateSplineStationsScalingStep>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_3">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Femur_r Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/femur_r/femur_r_physicalbodyoffset/femur_r_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineStationsScalingStep name="thinplatesplinestationsscalingstep_3">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Femur_r Stations</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_r_stations_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_r_stations_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find stations in the source model that should be warped by this scaling step.-->
+				<stations>/bodyset/femur_r/mid_rFE_in_femur_r_physicalbodyoffset /bodyset/femur_r/hip_r_joint_in_r_femur /bodyset/femur_r/rFLE_in_femur_r_physicalbodyoffset /bodyset/femur_r/rFME_in_femur_r_physicalbodyoffset</stations>
+			</ThinPlateSplineStationsScalingStep>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_4">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Femur_l Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/femur_l/femur_l_physicalbodyoffset/femur_l_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineStationsScalingStep name="thinplatesplinestationsscalingstep_4">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Femur_l Stations</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_l_stations_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_l_stations_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find stations in the source model that should be warped by this scaling step.-->
+				<stations>/bodyset/femur_l/mid_lFE_in_femur_l_physicalbodyoffset /bodyset/femur_l/hip_l_joint_in_l_femur /bodyset/femur_l/lFLE_in_femur_l_physicalbodyoffset /bodyset/femur_l/lFME_in_femur_l_physicalbodyoffset</stations>
+			</ThinPlateSplineStationsScalingStep>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_5">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Patella_r Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\patella_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\patella_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/patella_r/patella_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/patella_r/patella_r_physicalbodyoffset/patella_r_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineStationsScalingStep name="thinplatesplinestationsscalingstep_7">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Patella_r Stations</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_r_stations_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_r_stations_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/patella_r/patella_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find stations in the source model that should be warped by this scaling step.-->
+				<stations>/bodyset/patella_r/rFLE_in_patella_r_physicalbodyoffset /bodyset/patella_r/mid_rFE_in_patella_r_physicalbodyoffset /bodyset/patella_r/hip_r_joint_in_r_patella</stations>
+			</ThinPlateSplineStationsScalingStep>
+			<ThinPlateSplineMeshesScalingStep name="thinplatesplinemeshesscalingstep_6">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Patella_l Mesh</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\patella_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\patella_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/patella_l/patella_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Component path(s), relative to the model, that locates mesh(es) that should be scaled by this scaling step (e.g. `/bodyset/torso/torso_geom_4`)-->
+				<meshes>/bodyset/patella_l/patella_l_physicalbodyoffset/patella_l_geom</meshes>
+			</ThinPlateSplineMeshesScalingStep>
+			<ThinPlateSplineStationsScalingStep name="thinplatesplinestationsscalingstep_8">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Patella_l Stations</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_l_stations_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_l_stations_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/patella_l/patella_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find stations in the source model that should be warped by this scaling step.-->
+				<stations>/bodyset/patella_l/lFME_in_patella_l_physicalbodyoffset /bodyset/patella_l/mid_lFE_in_patella_l_physicalbodyoffset /bodyset/patella_l/hip_l_joint_in_l_patella</stations>
+			</ThinPlateSplineStationsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_0">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Pelvis_r Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<path_points>/forceset/glmed1_r/path/glmed1_r-P1 /forceset/glmed2_r/path/glmed2_r-P1 /forceset/glmed3_r/path/glmed3_r-P1 /forceset/glmax1_r/path/glmax1_r-P1 /forceset/glmax2_r/path/glmax2_r-P1 /forceset/addmagDist_r/path/addmagDist_r-P1 /forceset/addmagIsch_r/path/addmagIsch_r-P1 /forceset/addmagMid_r/path/addmagMid_r-P1 /forceset/addmagProx_r/path/addmagProx_r-P1 /forceset/recfem_r/path/recfem_r-P1 /forceset/glmax1_r/path/glmax1_r-P2 /forceset/glmax2_r/path/glmax2_r-P2 /forceset/glmax3_r/path/glmax3_r-P2</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_1">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Pelvis_l Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find path points in the source model that should be warped by this scaling step.-->
+				<path_points>/forceset/glmed1_l/path/glmed1_l-P1 /forceset/glmed2_l/path/glmed2_l-P1 /forceset/glmed3_l/path/glmed3_l-P1 /forceset/glmax1_l/path/glmax1_l-P1 /forceset/glmax2_l/path/glmax2_l-P1 /forceset/addmagDist_l/path/addmagDist_l-P1 /forceset/addmagIsch_l/path/addmagIsch_l-P1 /forceset/addmagMid_l/path/addmagMid_l-P1 /forceset/addmagProx_l/path/addmagProx_l-P1 /forceset/recfem_l/path/recfem_l-P1 /forceset/glmax1_l/path/glmax1_l-P2 /forceset/glmax2_l/path/glmax2_l-P2 /forceset/glmax3_l/path/glmax3_l-P2</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_2">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Sacrum Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\sacrum_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\sacrum_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find path points in the source model that should be warped by this scaling step.-->
+				<path_points>/forceset/glmax3_l/path/glmax3_l-P1 /forceset/glmax3_r/path/glmax3_r-P1</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_3">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Femur_r Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find path points in the source model that should be warped by this scaling step.-->
+				<path_points>/forceset/glmed1_r/path/glmed1_r-P2 /forceset/glmed2_r/path/glmed2_r-P2 /forceset/glmed3_r/path/glmed3_r-P2 /forceset/glmax1_r/path/glmax1_r-P3 /forceset/glmax1_r/path/glmax1_r-P4 /forceset/glmax2_r/path/glmax2_r-P3 /forceset/glmax2_r/path/glmax2_r-P4 /forceset/glmax3_r/path/glmax3_r-P3 /forceset/glmax3_r/path/glmax3_r-P4 /forceset/addmagDist_r/path/addmagDist_r-P2 /forceset/addmagIsch_r/path/addmagIsch_r-P2 /forceset/addmagMid_r/path/addmagMid_r-P2 /forceset/addmagProx_r/path/addmagProx_r-P2</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_4">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Femur_l Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find path points in the source model that should be warped by this scaling step.-->
+				<path_points>/forceset/glmed1_l/path/glmed1_l-P2 /forceset/glmed2_l/path/glmed2_l-P2 /forceset/glmed3_l/path/glmed3_l-P2 /forceset/glmax1_l/path/glmax1_l-P3 /forceset/glmax1_l/path/glmax1_l-P4 /forceset/glmax2_l/path/glmax2_l-P3 /forceset/glmax2_l/path/glmax2_l-P4 /forceset/glmax3_l/path/glmax3_l-P3 /forceset/glmax3_l/path/glmax3_l-P4 /forceset/addmagDist_l/path/addmagDist_l-P2 /forceset/addmagIsch_l/path/addmagIsch_l-P2 /forceset/addmagMid_l/path/addmagMid_l-P2 /forceset/addmagProx_l/path/addmagProx_l-P2</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_5">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Patella_r Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\patella_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\patella_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/patella_r/patella_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find path points in the source model that should be warped by this scaling step.-->
+				<path_points>/forceset/recfem_r/path/recfem_r-P2</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplinePathPointsScalingStep name="thinplatesplinepathpointsscalingstep_6">
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to Patella_l Path Points</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\patella_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\patella_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/patella_l/patella_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Query paths (e.g. `/forceset/*`) that the engine should use to find path points in the source model that should be warped by this scaling step.-->
+				<path_points>/forceset/recfem_l/path/recfem_l-P2</path_points>
+			</ThinPlateSplinePathPointsScalingStep>
+			<ThinPlateSplineWrapCylinderScalingStep name="thinplatesplinewrapcylinderscalingstep_0">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to WrapCylinders in Pelvis_l</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Absolute paths (e.g. `/bodyset/body/wrap_cylinder_2`) to `WrapCylinder` components in the model-->
+				<wrap_cylinders>/bodyset/pelvis/pelvis_physicalbodyoffset/wrapobjectset/glmax1_at_pelvis_l /bodyset/pelvis/pelvis_physicalbodyoffset/wrapobjectset/glmax2_at_pelvis_l /bodyset/pelvis/pelvis_physicalbodyoffset/wrapobjectset/glmax3_at_pelvis_l</wrap_cylinders>
+				<!--The distance, in meters, that the `WrapCylinder`s' midlines should be projected from each of their origin points before putting them through the TPS algorithm. This is used to figure out the new orientation of the `WrapCylinder`s.-->
+				<midline_projection_distance>0.019999999552965164</midline_projection_distance>
+				<!--An angle, in radians, of a vector that originates in each `WrapCylinder`'s origin, spins around their Z axis with an angle of theta from the X axis, and has a length of each `WrapCylinder`'s `radius`, producing a surface point. Each surface point is fed through the TPS algorithm and used to recalculate each `WrapCylinder`'s `radius` and `quadrant`-->
+				<surface_projection_theta>0.0</surface_projection_theta>
+			</ThinPlateSplineWrapCylinderScalingStep>
+			<ThinPlateSplineWrapCylinderScalingStep name="thinplatesplinewrapcylinderscalingstep_1">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to WrapCylinders in Pelvis_r</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\pelvis_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\pelvis_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/pelvis/pelvis_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Absolute paths (e.g. `/bodyset/body/wrap_cylinder_2`) to `WrapCylinder` components in the model-->
+				<wrap_cylinders>/bodyset/pelvis/pelvis_physicalbodyoffset/wrapobjectset/glmax1_at_pelvis_r /bodyset/pelvis/pelvis_physicalbodyoffset/wrapobjectset/glmax2_at_pelvis_r /bodyset/pelvis/pelvis_physicalbodyoffset/wrapobjectset/glmax3_at_pelvis_r</wrap_cylinders>
+				<!--The distance, in meters, that the `WrapCylinder`s' midlines should be projected from each of their origin points before putting them through the TPS algorithm. This is used to figure out the new orientation of the `WrapCylinder`s.-->
+				<midline_projection_distance>-0.019999999552965164</midline_projection_distance>
+				<!--An angle, in radians, of a vector that originates in each `WrapCylinder`'s origin, spins around their Z axis with an angle of theta from the X axis, and has a length of each `WrapCylinder`'s `radius`, producing a surface point. Each surface point is fed through the TPS algorithm and used to recalculate each `WrapCylinder`'s `radius` and `quadrant`-->
+				<surface_projection_theta>0.0</surface_projection_theta>
+			</ThinPlateSplineWrapCylinderScalingStep>
+			<ThinPlateSplineWrapCylinderScalingStep name="thinplatesplinewrapcylinderscalingstep_2">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to WrapCylinders in Femur_l</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Absolute paths (e.g. `/bodyset/body/wrap_cylinder_2`) to `WrapCylinder` components in the model-->
+				<wrap_cylinders>/bodyset/femur_l/femur_l_physicalbodyoffset/wrapobjectset/addmagProx_at_femur_l /bodyset/femur_l/femur_l_physicalbodyoffset/wrapobjectset/addmagMid_at_femur_l /bodyset/femur_l/femur_l_physicalbodyoffset/wrapobjectset/addmagDist_at_femur_l</wrap_cylinders>
+				<!--The distance, in meters, that the `WrapCylinder`s' midlines should be projected from each of their origin points before putting them through the TPS algorithm. This is used to figure out the new orientation of the `WrapCylinder`s.-->
+				<midline_projection_distance>0.019999999552965164</midline_projection_distance>
+				<!--An angle, in radians, of a vector that originates in each `WrapCylinder`'s origin, spins around their Z axis with an angle of theta from the X axis, and has a length of each `WrapCylinder`'s `radius`, producing a surface point. Each surface point is fed through the TPS algorithm and used to recalculate each `WrapCylinder`'s `radius` and `quadrant`-->
+				<surface_projection_theta>3.14159</surface_projection_theta>
+			</ThinPlateSplineWrapCylinderScalingStep>
+			<ThinPlateSplineWrapCylinderScalingStep name="thinplatesplinewrapcylinderscalingstep_3">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to WrapCylinders in Femur_l</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_l_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_l_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_l/femur_l_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Absolute paths (e.g. `/bodyset/body/wrap_cylinder_2`) to `WrapCylinder` components in the model-->
+				<wrap_cylinders>/bodyset/femur_l/femur_l_physicalbodyoffset/wrapobjectset/addmagIsch_at_femur_l</wrap_cylinders>
+				<!--The distance, in meters, that the `WrapCylinder`s' midlines should be projected from each of their origin points before putting them through the TPS algorithm. This is used to figure out the new orientation of the `WrapCylinder`s.-->
+				<midline_projection_distance>0.019999999552965164</midline_projection_distance>
+				<!--An angle, in radians, of a vector that originates in each `WrapCylinder`'s origin, spins around their Z axis with an angle of theta from the X axis, and has a length of each `WrapCylinder`'s `radius`, producing a surface point. Each surface point is fed through the TPS algorithm and used to recalculate each `WrapCylinder`'s `radius` and `quadrant`-->
+				<surface_projection_theta>1.570796</surface_projection_theta>
+			</ThinPlateSplineWrapCylinderScalingStep>
+			<ThinPlateSplineWrapCylinderScalingStep name="thinplatesplinewrapcylinderscalingstep_4">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to WrapCylinders in Femur_r</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Absolute paths (e.g. `/bodyset/body/wrap_cylinder_2`) to `WrapCylinder` components in the model-->
+				<wrap_cylinders>/bodyset/femur_r/femur_r_physicalbodyoffset/wrapobjectset/addmagProx_at_femur_r /bodyset/femur_r/femur_r_physicalbodyoffset/wrapobjectset/addmagMid_at_femur_r /bodyset/femur_r/femur_r_physicalbodyoffset/wrapobjectset/addmagDist_at_femur_r</wrap_cylinders>
+				<!--The distance, in meters, that the `WrapCylinder`s' midlines should be projected from each of their origin points before putting them through the TPS algorithm. This is used to figure out the new orientation of the `WrapCylinder`s.-->
+				<midline_projection_distance>-0.019999999552965164</midline_projection_distance>
+				<!--An angle, in radians, of a vector that originates in each `WrapCylinder`'s origin, spins around their Z axis with an angle of theta from the X axis, and has a length of each `WrapCylinder`'s `radius`, producing a surface point. Each surface point is fed through the TPS algorithm and used to recalculate each `WrapCylinder`'s `radius` and `quadrant`-->
+				<surface_projection_theta>3.14159</surface_projection_theta>
+			</ThinPlateSplineWrapCylinderScalingStep>
+			<ThinPlateSplineWrapCylinderScalingStep name="thinplatesplinewrapcylinderscalingstep_5">
+				<!--toggles applying this scaling step when scaling the model-->
+				<enabled>true</enabled>
+				<!--a user-facing label for the scaling step-->
+				<label>Apply TPS to WrapCylinders in Femur_r</label>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the source landmarks can be loaded from (e.g. `Geometry/torso.landmarks.csv`)-->
+				<source_landmarks_file>..\template_warping_files\femur_r_mesh_template_landmarks.csv</source_landmarks_file>
+				<!--Filesystem path, relative to the model's filesystem path, where a CSV containing the destination landmarks can be loaded from (e.g. `DestinationGeometry/torso.landmarks.csv`)-->
+				<destination_landmarks_file>..\..\participant_data\ParticipantID\warping_files\femur_r_mesh_target_landmarks.csv</destination_landmarks_file>
+				<!--Component path (e.g. `/bodyset/somebody`) to the frame that the landmarks defined in both `source_landmarks_file` and `destination_landmarks_file` are expressed in.
+
+The engine uses this to figure out how to transform the input to/from the coordinate system of the warp transform.-->
+				<landmarks_frame>/bodyset/femur_r/femur_r_physicalbodyoffset</landmarks_frame>
+				<!--Enable/disable applying the affine translational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_translation>true</apply_affine_translation>
+				<!--Enable/disable applying the application of the affine rotational part of the TPS warp to the output. This can be useful/necessary if/when it's handled by some other part of the model (e.g. an offset frame, joint frame).-->
+				<apply_affine_rotation>true</apply_affine_rotation>
+				<!--Absolute paths (e.g. `/bodyset/body/wrap_cylinder_2`) to `WrapCylinder` components in the model-->
+				<wrap_cylinders>/bodyset/femur_r/femur_r_physicalbodyoffset/wrapobjectset/addmagIsch_at_femur_r</wrap_cylinders>
+				<!--The distance, in meters, that the `WrapCylinder`s' midlines should be projected from each of their origin points before putting them through the TPS algorithm. This is used to figure out the new orientation of the `WrapCylinder`s.-->
+				<midline_projection_distance>-0.019999999552965164</midline_projection_distance>
+				<!--An angle, in radians, of a vector that originates in each `WrapCylinder`'s origin, spins around their Z axis with an angle of theta from the X axis, and has a length of each `WrapCylinder`'s `radius`, producing a surface point. Each surface point is fed through the TPS algorithm and used to recalculate each `WrapCylinder`'s `radius` and `quadrant`-->
+				<surface_projection_theta>1.570796</surface_projection_theta>
+			</ThinPlateSplineWrapCylinderScalingStep>
+		</components>
+		<!--A sequence of `ScalingParameterOverride`s that should be used in place of the default values used by the `ScalingStep`s.-->
+		<scaling_parameter_overrides>
+			<ScalingParameterOverride>
+				<!--The name of the scaling parameter that should have its default overridden.-->
+				<parameter_name>blending_factor</parameter_name>
+				<!--The value to override the scaling parameter with. Note: it must have the correct datatype for the given scaling parameter.-->
+				<parameter_value>1</parameter_value>
+			</ScalingParameterOverride>
+		</scaling_parameter_overrides>
+	</ModelWarperV3Document>
+</OpenSimDocument>

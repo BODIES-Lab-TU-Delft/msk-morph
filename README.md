@@ -101,7 +101,7 @@ External Software:
          wsl -d Ubuntu2004
       ```
 
-      Setup a sudo user and make it default:
+      Setup a `sudo` user and make it default:
       ```bash
          useradd -m -s /bin/bash mskmorph
          usermod -aG sudo mskmorph
@@ -205,7 +205,7 @@ MSK-Morph/
 3. **Prepare your data**:
    - Place participant meshes in `participant_data/{participant_id}/target_geometry/`.
    - If you prefer to save the participant data in a different directory, make sure to adjust:
-      - The `PARTICIPANT_BASE_DIR` variable in `msk_morph.py` accordingly
+      - The `PARTICIPANT_BASE_DIR` variable in `msk_morph.py` accordingly.
       - The paths to the `<destination_landmarks_file>` tag inside the ModelWarper xml settings file (the relative paths in this template settings file will be used to create the corresponding settings file for each participant by replacing the `ParticipantID` string automatically).
 
 4. **Run the pipeline**:
@@ -229,52 +229,71 @@ For a detailed description of how MSK-Morph works, please see: https://www.biorx
 # CONFIGURATION PARAMETERS
 # =============================================================================
 
-# Participant configuration - MODIFY THIS FOR BATCH PROCESSING
-PARTICIPANT_IDS = ["test"]  # List of participant IDs to process in batch mode ["001","002","003"]
+# PARTICIPANT CONFIGURATION - MODIFY THIS FOR BATCH PROCESSING
+# List of participant IDs to process in batch mode ["001","002","003"]
 # Run on "test" to test pipeline on test data
+PARTICIPANT_IDS = ["test"]
 
-# Directory configuration
-TEMPLATE_GEOM_DIR = "./template_model_and_settings/template_geometry" # Path to the template bone geometries of the LD-MSK model
-TEMPLATE_REGISTRATION_DIR = "./template_mesh_registration" # Directory where the generated vtk versions of the template LD-MSK geometries are saved (expected to be empty on first run of a new LD-MSK model; populated automatically during execution)
-TEMPLATE_WARPING_DIR = "./template_warping_files" # Directory where the generated landmark files (CSV) are saved (expected to be empty on first run of a new LD-MSK model; populated automatically during execution)
+# Path to the base directory containing your participant dataset
+PARTICIPANT_BASE_DIR = "../participant_data"
 
-# MSK-Morph settings file path
-SETTINGS_FILE_PATH = "./template_model_and_settings/MSK-Morph_settings.yaml" # Path to the MSK-Morph settings file defining the morphing and landmark identification rules
+# DIRECTORY CONFIGURATION
+# Path to the template bone geometries of the LD-MSK model
+TEMPLATE_GEOM_DIR = "./template_model_and_settings/template_geometry"
 
-# ModelWarper settings file path
-TEMPLATE_WARPING_SET_FILENAME = "./template_model_and_settings/SettingsModelWarper_StationDefinedTemplateModel_HipJoints.xml" # Path to the template LD-MSK model morphing settings file (for OpenSim Creator's ModelWarper)
+# Directory where the generated vtk versions of the template LD-MSK geometries
+# are saved (expected to be empty on first run of a new LD-MSK model; populated automatically)
+TEMPLATE_REGISTRATION_DIR = "./template_mesh_registration"
 
-PARTICIPANT_BASE_DIR = "../participant_data" # Path to the base directory containing your participant dataset
-TEMP_BASE_DIR = "./temp" # Path to the directory where temporary files are saved (must be deleted manually for the files to be overwritten)
+# Directory where the generated landmark files (CSV) are saved
+# (expected to be empty on first run of a new LD-MSK model; populated automatically)
+TEMPLATE_WARPING_DIR = "./template_warping_files"
 
-# Mesh processing parameters - Adjust according to template and target bone geometries
+# MSK-Morph SETTINGS FILE
+# Path to the MSK-Morph settings file defining the morphing and landmark identification rules
+SETTINGS_FILE_PATH = "./template_model_and_settings/MSK-Morph_settings.yaml"
+
+# ModelWarper SETTINGS FILE
+# Path to the template LD-MSK model morphing settings file (for OpenSim Creator's ModelWarper)
+TEMPLATE_WARPING_SET_FILENAME = "./template_model_and_settings/SettingsModelWarper_StationDefinedTemplateModel_HipJoints.xml"
+
+# Path to the directory where temporary files are saved
+# (must be deleted manually for files to be overwritten)
+TEMP_BASE_DIR = "./temp"
+
+# Mesh processing parameters - Adjust according to template and target geometries
 TEMPLATE_SCALE_FACTOR = 1000.0  # m to mm for template meshes
 TARGET_SCALE_FACTOR = 1.0       # Target meshes already in mm, no scaling needed
 POSTPROCESS_SCALE_FACTOR = 0.001  # mm to m for final output
 
-REGISTRATION_PARAMS = {          # Settings for the mesh registration step to be fed to Deformetrica
-    'downsample_meshes': False,             # downsample_meshes: set to True to downsample the target meshes to speed the processing
-                                            # Default value is 50% downsampling (0.5)
-    #'downsample_reduction_factor': 0.9,    # To select a different value, add the argument 'downsample_reduction_factor' and set your desired downsampling factor
+# Settings for the mesh registration step to be fed to Deformetrica
+REGISTRATION_PARAMS = {
+    # Set to True to downsample target meshes to speed up processing
+    # Default downsampling is 50% (0.5)
+    'downsample_meshes': False,     
+    #'downsample_reduction_factor': 0.9,    # Uncomment to set a custom factor
     'max_iterations': 40,
     'conda_env': 'deformetrica',
     'verbose': True,
-    'iterative_reg': True,                      #   iterative_reg: Set to True to enable coarse-to-fine iterative registration
-                                                #   When True, deformation_kernel_width and template_kernel_width must be equal-length lists
-                                                #   Each element defines one registration stage
-                                                #   When False, both kernel width parameters must be a single scalar value
+    # Set to True to enable coarse-to-fine iterative registration.
+    # When True, deformation_kernel_width and template_kernel_width must be
+    # equal-length lists — each element defines one registration stage.
+    # When False, both must be a single scalar value.
+    'iterative_reg': True,
     'deformation_kernel_width': [20.0, 10.0],
     'template_kernel_width': [20.0, 10.0],
 }
 
 # Anatomical axes definitions - Adjust according to template and target bone geometries
-TEMPLATE_AXES = create_axes_definition(   # Manually identify the closest matching anatomical directions in the template geometries
+# Manually identify the closest matching anatomical directions in the template geometries
+TEMPLATE_AXES = create_axes_definition(
     anterior='x',
     superior='y',
     right='z'
 )
 
-TARGET_AXES = create_axes_definition(     # Manually identify the closest matching anatomical directions in the target geometries
+# Manually identify the closest matching anatomical directions in the target geometries
+TARGET_AXES = create_axes_definition(
     anterior='-y',
     superior='z',
     right='-x'
@@ -371,14 +390,21 @@ participant_data/{participant_id}/
         └── *.vtk                               # Processed meshes
 ```
 
-To obtain the morphed LD-MSK model, you must load the ModelWarper settings file (xml file) generated in the participant's directory `../participant_data/{participant_id}/warping_files` (which points at the corresponding csv landmark files) and the template LD-MSK model (osim file) in `./template_model_and_settings` in OpenSim Creator's ModelWarper tool. 
-Then, manually select the directory to save the morphed geometries using the gear button next to `Export Warped Model` (recommendation: `../participant_data/{participant_id}/morphed_geometry`. The path must be absolute). After, click the `Export Warped Model` button. You can then save the model under your chosen name (recommended directory: `../participant_data/{participant_id}`).
+To obtain the morphed LD-MSK model, follow these steps in OpenSim Creator's ModelWarper tool:
+
+1. Load the ModelWarper settings file (xml file) generated in the participant's directory `../participant_data/{participant_id}/warping_files` (which points at the corresponding csv landmark files).
+2. Load the template LD-MSK model (osim file) in `./template_model_and_settings`. 
+3. Manually select the directory to save the morphed geometries using the export settings (gear button next to `Export Warped Model`) (recommendation: `../participant_data/{participant_id}/morphed_geometry`. The path must be absolute). 
+4. Click the `Export Warped Model` button. 
+5. Save the model under your chosen name (recommended directory: `../participant_data/{participant_id}`).
 
 Note: Morphed LD-MSK models are saved by default in OpenSim Creator with hard-coded absolute paths to the bone geometry meshes (`morphed_geometry` folder). To prevent any issues with loading the geometries, run the script `./participant_data/convert_osim_paths_to_rel.py` to replace all absolute paths with relative ones, and keep the model and corresponding `morphed_geometry` folder always in the same directory.
 
 ### Posing the morphed LD-MSK model onto the target data
 
-Morphed LD-MSK models are posed by default in the neutral anatomical pose, following the [ISB](https://doi.org/10.1016/S0021-9290(01)00222-6) recommendations. To pose the models in the same pose as the target geometries, run the script `./participant_data/posing_morphed_model_onto_CSscanner.py` using OpenSim's Python [API](https://opensimconfluence.atlassian.net/wiki/spaces/OpenSim/pages/53085346/Scripting+in+Python#Setting-up-your-Python-scripting-environment).
+Morphed LD-MSK models are generated by default in the neutral anatomical pose, following the [ISB](https://doi.org/10.1016/S0021-9290(01)00222-6) recommendations. 
+
+To re-pose the models to match the target geometries' pose, run the script `./participant_data/posing_morphed_model_onto_CSscanner.py` using OpenSim's Python [API](https://opensimconfluence.atlassian.net/wiki/spaces/OpenSim/pages/53085346/Scripting+in+Python#Setting-up-your-Python-scripting-environment).
 
 ## Authors
 

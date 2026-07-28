@@ -1,0 +1,84 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Fast tiers: unit + integration (Deformetrica mocked).
+  # pytest reads pyproject.toml for `pythonpath = ["msk_morph"]` and `testpaths`.
+  # ---------------------------------------------------------------------------
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      # The module under test imports the real `deformetrica` at load time, but the fast tiers
+      # mock it and never call it. Instead of installing the heavy real package,
+      # create a small fake `deformetrica` package on disk with an `api` submodule;
+      # each module returns a MagicMock for any name accessed. 
+
+      - name: Create a CI-only deformetrica stub
+        run: |
+          mkdir -p _ci_stubs/deformetrica
+          printf 'def __getattr__(name):\n    from unittest.mock import MagicMock\n    return MagicMock()\n' > _ci_stubs/deformetrica/__init__.py
+          printf 'def __getattr__(name):\n    from unittest.mock import MagicMock\n    return MagicMock()\n' > _ci_stubs/deformetrica/api.py
+          # Fail loudly *here* if the stub can't satisfy the import:
+          PYTHONPATH="$PWD/_ci_stubs" python -c "from deformetrica.api import Deformetrica; print('deformetrica stub OK')"
+ 
+      - name: Run fast tiers
+        env:
+          # Prepend the stub dir so `import deformetrica` finds the fake package.
+          # pytest still adds `msk_morph` (from pyproject), so `utils` resolves.
+          PYTHONPATH: ${{ github.workspace }}/_ci_stubs
+        run: pytest -m "not real" -v
+
+  # ---------------------------------------------------------------------------
+  # Real end-to-end registration: runs the actual Deformetrica API on CPU.
+  # Installs the real package, so no stub here.
+  # ---------------------------------------------------------------------------
+  
+  real-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - name: Install system libraries for Open3D
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1 libegl1 libopengl0 libglx0 libusb-1.0-0 libgomp1
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+          # Open3D development wheel (has cp313 where stable PyPI does not yet):
+          pip install -U -f https://www.open3d.org/docs/latest/getting_started.html --only-binary open3d open3d
+          pip install "git+https://github.com/BODIES-Lab-TU-Delft/deformetrica.git"
+
+      - name: Verify Open3D import
+        run: python -c "import open3d as o3d; print('open3d', o3d.__version__)"
+
+      - name: Run real registration + e2e tests
+        run: pytest -m real -v -s

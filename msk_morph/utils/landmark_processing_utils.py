@@ -109,7 +109,7 @@ class LandmarkProcessor:
             return self.mesh_cache[mesh_path]
         
         ms = ml.MeshSet()
-        ms.load_new_mesh(mesh_path)
+        ms.load_new_mesh(str(mesh_path))
         mesh = ms.current_mesh()
         
         vertices = mesh.vertex_matrix()
@@ -434,7 +434,7 @@ class LandmarkProcessor:
         for mesh_name in mesh_files:
             csv_filename = f"{mesh_name}_mesh_target_landmarks.csv"
             csv_path = os.path.join(output_directory, csv_filename)
-            mesh_path = os.path.join(mesh_directory, f"{mesh_name}.stl")
+            mesh_path = find_mesh_file(mesh_directory, mesh_name)
             
             # Check if file already exists
             if os.path.exists(csv_path):
@@ -468,7 +468,7 @@ class LandmarkProcessor:
                                 landmark_count += 1
                     
                     # Write all mesh vertices
-                    if os.path.exists(mesh_path):
+                    if mesh_path is not None and os.path.exists(mesh_path):
                         vertices, _ = self.load_mesh_with_pymeshlab(mesh_path)
                         vertex_count = 0
                         
@@ -769,7 +769,7 @@ def create_template_landmark_csv_files(settings_file_path: str,
                     if os.path.exists(template_mesh_path):
                         if PYMESHLAB_AVAILABLE:
                             ms = ml.MeshSet()
-                            ms.load_new_mesh(template_mesh_path)
+                            ms.load_new_mesh(str(template_mesh_path))
                             mesh = ms.current_mesh()
                             vertices = mesh.vertex_matrix()
                             
@@ -841,7 +841,7 @@ def create_template_landmark_csv_files(settings_file_path: str,
                 if mesh_path is not None:
                     if PYMESHLAB_AVAILABLE:
                         ms = ml.MeshSet()
-                        ms.load_new_mesh(mesh_path)
+                        ms.load_new_mesh(str(mesh_path))
                         mesh = ms.current_mesh()
                         vertices = mesh.vertex_matrix()
                         vertex_count = 0

@@ -1,6 +1,6 @@
 # MSK-Morph
 
-MSK-Morph systematically morphs template landmark-defined musculoskeletal (LD-MSK) models onto individual bone geometries by using explicit definitions based on landmarks embedded in the musculoskeletal model. The inputs to the framework are: the target bone geometries to which the template will be morphed (e.g., those derived from medical imaging); a template LD-MSK model compatible with [OpenSim](https://opensim.stanford.edu/) and [OpenSim Creator](https://www.opensimcreator.com/); and the morphing settings that specify how the template model should be transformed. The output is a morphed LD-MSK model with subject-specific bone geometry.
+MSK-Morph systematically morphs template landmark-defined musculoskeletal (LD-MSK) models onto individual bone geometries by using explicit definitions based on landmarks embedded in the musculoskeletal model. The inputs to the pipeline are: the target bone geometries to which the template will be morphed (e.g., those derived from medical imaging); a template LD-MSK model compatible with [OpenSim](https://opensim.stanford.edu/) and [OpenSim Creator](https://www.opensimcreator.com/); and the morphing settings that specify how the template model should be transformed. The output is a morphed LD-MSK model with subject-specific bone geometry.
 
 This repository contains the Python code and instructions to automatically generate the necessary landmark files to easily produce morphed LD-MSK models with personalized musculoskeletal geometry using OpenSim Creator's ModelWarper tool.
 
@@ -31,7 +31,7 @@ This repository contains the Python code and instructions to automatically gener
 
 ### Python Version
 
-- Python 3.10.6
+- Python 3.13
 
 ### Dependencies
 
@@ -51,88 +51,65 @@ External Software:
 
 ## Installation
 
-1. Clone or download this repository.
+1. Windows users only: Install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) and the Ubuntu version 24.04 through the PowerShell using:
+```shell
+ wsl --install -d Ubuntu-24.04
+ ```
 
-2. Create a virtual environment:
+2. Install Python 3.13 in Ubuntu: You can use pyenv or deadsnakes to help with this process. However, for working with sensitive data (e.g. participant data), the safest option is to build Python from source following the steps:
 
-   2.1. In the command line (CMD), type:
-      ```bash
-         cd path\to\MSK-Morph-project
-         py -3.10 -m venv msk-morph-env
+   1. Open the WSL terminal: you might find it as Ubuntu app
+   2. Install build dependencies:
+      ```shell
+      sudo apt update
+      sudo apt install -y build-essential zlib1g-dev libncurses5-dev \
+      libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev \
+      libsqlite3-dev wget libbz2-dev liblzma-dev libexpat1-dev pkg-config
       ```
-
-   2.2. To activate it:
-   
-   - If running the code from the terminal, type in CMD:
-      ```bash
-         msk-morph-env\Scripts\activate
+   3. Download Python 3.13.13 source:
+      ```shell
+      wget https://www.python.org/ftp/python/3.13.13/Python-3.13.13.tgz
       ```
-
-   - If running the code from an editor (recommended option), set the environment up in, for example, [Visual Studio Code (VSCode)](https://code.visualstudio.com/):
-
-      To open the directory: File → Open Folder → Select MSK-Morph directory (same directory containing the venv folder "msk_morph_env" and the folders "msk_morph" and "participant_data").
-
-      To setup the venv: Ctrl+Shift+P → Python: Select Interpreter → msk_morph_env.
-
-3. Install Python dependencies inside the virtual environment:
-   ```bash
-      pip install -r requirements.txt
+   4. Extract it:
+      ```shell
+      tar -xf Python-3.13.13.tgz
+      cd Python-3.13.13
+      ```
+   5. Configure the build
+      ```shell
+      ./configure --prefix=/usr/local
+      ```
+   6. Compile:
+      ```shell
+      make -j$(nproc)
+      ```
+   7. Install:
+      ```shell
+      sudo make altinstall
+      ```
+      `altinstall` is important, as it prevents overwriting your system Python.
+   8. Verify installation:
+      ```shell
+      python3.13 --version
+      ```
+3. Create your virtual environment (always save it to the WSL filesystem, not the Windows partition):
+   ```shell
+   python3.13 -m venv ~/msk-morph-env
+   source ~/msk-morph-env/bin/activate
    ```
-
-4. Install Deformetrica:
-
-   - (for Windows users) Install [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) **outside of the venv** and the Ubuntu version 20.04 through the PowerShell using the commands below. During installation, you might be prompted to select a username and password. This username is important for MSK-Morph to work correctly. For new users to WSL, the easiest is to set the username to `mskmorph` (you can pick any password you like). 
-
-      Note: Ubuntu 20.04 has reached end-of-life, but it is necessary to run the latest Deformetrica version. Ongoing work will update MSK-Morph to run on newer Ubuntu versions. For now, you can install Ubuntu 20.04 as:
-
-      Download WSL:
-      ```bash
-         Invoke-WebRequest -Uri "https://releases.ubuntu.com/focal/ubuntu-20.04.6-wsl-amd64.wsl" -OutFile "$env:USERPROFILE\Ubuntu2004.wsl"
-      ```
-
-      Create a folder for the distro and import it:
-      ```bash
-         mkdir C:\WSL\Ubuntu2004
-         wsl --import Ubuntu2004 C:\WSL\Ubuntu2004 "$env:USERPROFILE\Ubuntu2004.wsl"
-      ```
-
-      Launch it:
-      ```bash
-         wsl -d Ubuntu2004
-      ```
-
-      Setup a `sudo` user and make it default:
-      ```bash
-         useradd -m -s /bin/bash mskmorph
-         usermod -aG sudo mskmorph
-         echo -e "[user]\ndefault=mskmorph" > /etc/wsl.conf
-      ```
-
-      If the installation fails, adjust your Windows settings to allow the installation: Windows Start Menu → "turn Windows features on or off" → Check the boxes for: 
-         - Windows subsystem for linux.
-         - Virtual machine platform.
-         - Windows hypervisor platform.
-
-      For users familiar with WSL and with existing installations, make sure that you change the username that MSK-Morph's code uses to that of your WSL:
-      Go to the [deformetrica_registration.py](./msk_morph/utils/deformetrica_registration.py#373) script, line 373: `sys.path.insert(0, '/home/mskmorph/anaconda3/envs/deformetrica/lib/python3.8/site-packages')`. Replace the username `mskmorph` in this line by that from your WSL.
-
-   - Install [Anaconda3](https://www.anaconda.com/download/success) in the WSL: download any distribution for linux and install it using the `bash` command within the WSL (note that your `C:` drive will be called `/mnt/c/` in the WSL). For new users of WSL, at the end of the installation, when asked “Do you wish to update your shell profile to automatically initialize conda?", type "yes". This will modify the shell to enable conda (if you accidentally typed "no", use `/home/mskmorph/anaconda3/bin/conda init bash` to intitalize it).
-   
-   - Install the [Deformetrica](https://gitlab.com/icm-institute/aramislab/deformetrica) framework and create a conda environment following the instructions written in their repository:
-      ```
-      conda create -n deformetrica python=3.8 numpy && source activate deformetrica
-      pip install deformetrica
-      ```
-      You also need to manually install the dependencies "cmake" and "g++ build-essential":
-      ```
-      sudo apt-get update
-      sudo apt-get install cmake
-      sudo apt-get install g++ build-essential
-      ```
-
-   - If the WSL and Deformetrica are installed correctly, you will not need to open the WSL again to run MSK-Morph. MSK-Morph will make the call to the WSL in the background when necessary.
-
-5. Install [OpenSim Creator](https://www.opensimcreator.com/).
+4. Clone MSK-Morph repository and install dependencies:
+   ```shell
+   cd path-to-msk-morph-root #If saved to the Windows partition, the path starts with /mnt/c/ (or /mnt/d/, etc.)
+   pip install -r requirements.txt
+   sudo apt install -y libopengl0 libglx0 #OpenGL runtime libraries that are not installed by default in headless Ubuntu environments (including WSL)
+   pip install -U -f https://www.open3d.org/docs/latest/getting_started.html --only-binary open3d open3d #Open3d does not have pre-built wheels for Python 3.13 on Linux yet. Once this is available, you can simply run "pip install open3d" instead
+   sudo apt-get install libusb-1.0-0 #dependency of open3d
+   ```
+5. Install Deformetrica: The repository linked below is an [updated version](https://github.com/BODIES-Lab-TU-Delft/deformetrica) of the original [Deformetrica](https://gitlab.com/icm-institute/aramislab/deformetrica) code, which has been upgraded to be compatible with newer versions of Python.
+   ```shell
+   pip install "git+https://github.com/BODIES-Lab-TU-Delft/deformetrica.git"
+   ```
+6. Install [OpenSim Creator](https://www.opensimcreator.com/).
 
 ## Folder Structure
 
@@ -141,10 +118,12 @@ MSK-Morph/
 │
 ├── requirements.txt                       # Python dependencies
 │
+├── pyproject.toml                         # Pytest configuration
+│
 ├── msk_morph
-│    ├──msk_morph.py                          # Main pipeline script
+│    ├── msk_morph.py                          # Main pipeline script
 │    │
-│    ├── utils/                                 # Utility modules
+│    ├── utils/                                # Utility modules
 │    │   ├── __init__.py
 │    │   ├── mesh_loader.py                    # Mesh loading with fallbacks
 │    │   ├── mesh_converter.py                 # Mesh format conversion
@@ -164,11 +143,13 @@ MSK-Morph/
 │    │    ├── SettingsModelWarper_*.xml             # OpenSim Creator ModelWarper template settings
 │    │    └── StationDefinedTemplateModel_*.osim    # Landmark-defined template musculoskeletal model
 │    │
-│    ├── template_mesh_registration/    # Ready for registration template mesh files (VTK) (generated)
+│    ├── template_mesh_registration/      # Ready for registration template mesh files (VTK) (generated)
 │    │
-│    ├── template_warping_files/    # Template landmark CSVs (generated)
+│    ├── template_warping_files/          # Template landmark CSVs (generated)
 │    │
-│    └── temp/
+│    ├── temp/                            # Temporary files (generated)
+│    │
+│    └── tests/                           # Multi-level tests and sample fixtures
 │
 └── participant_data/                     # Participant-specific data
     └── {participant_id}/
@@ -208,13 +189,12 @@ MSK-Morph/
       - The `PARTICIPANT_BASE_DIR` variable in `msk_morph.py` accordingly.
       - The paths to the `<destination_landmarks_file>` tag inside the ModelWarper xml settings file (the relative paths in this template settings file will be used to create the corresponding settings file for each participant by replacing the `ParticipantID` string automatically).
 
-4. **Run the pipeline**:
-   - In CMD:
+4. **Run the pipeline** (always make sure to have activated the venv):
       ```
-      cd msk_morph
+      source ~/msk-morph-env/bin/activate
+      cd path-to-msk-morph-root/msk_morph
       python msk_morph.py
       ```
-   - In VSCode: Press `F5`
 
 
 ### Configuration
@@ -273,7 +253,6 @@ REGISTRATION_PARAMS = {
     'downsample_meshes': False,     
     #'downsample_reduction_factor': 0.9,    # Uncomment to set a custom factor
     'max_iterations': 40,
-    'conda_env': 'deformetrica',
     'verbose': True,
     # Set to True to enable coarse-to-fine iterative registration.
     # When True, deformation_kernel_width and template_kernel_width must be
@@ -364,6 +343,7 @@ TARGET_AXES = create_axes_definition(
       in_csv_files: false
       in_marker_file: false
    ```
+- Additional landmark recalculation methods can be implemented in the utils scripts [`aux_landmark_utils.py`](./msk_morph/utils/aux_landmark_utils.py) and [`landmark_processing_utils.py`](./msk_morph/utils/landmark_processing_utils.py).
 
 #### OpenSim Creator's ModelWarper Settings (`SettingsModelWarper_StationDefinedTemplateModel_HipJoints.xml`)
 

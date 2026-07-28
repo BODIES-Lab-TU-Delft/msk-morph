@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Framework to morph landmark-defined musculoskeletal models into subject-specific bone geometries.
+Pipeline to morph landmark-defined musculoskeletal models into subject-specific bone geometries.
 Complete pipeline for processing 3D bone meshes into OpenSim-ready landmark-defined musculoskeletal models.
 Supports single participant or batch processing of multiple participants.
 
@@ -73,7 +73,6 @@ REGISTRATION_PARAMS = {
     'downsample_meshes': False,     
     #'downsample_reduction_factor': 0.9,    # Uncomment to set a custom factor
     'max_iterations': 40,
-    'conda_env': 'deformetrica',
     'verbose': True,
     # Set to True to enable coarse-to-fine iterative registration.
     # When True, deformation_kernel_width and template_kernel_width must be
@@ -386,25 +385,38 @@ def perform_mesh_registration(participant_id, directories):
     
     # Check if registration results already exist
     registration_output_dir = directories['registration_output_dir']
+    _target_vtk = "DeterministicAtlas__Reconstruction__bone_trial__subject_subject_0.vtk"
+
+    def _registration_output_exists(mesh_dir: str) -> bool:
+        """Return True if the expected Deformetrica VTK output exists in mesh_dir."""
+        p = Path(mesh_dir)
+        if (p / _target_vtk).exists():
+            return True
+        iter_dirs = sorted([d for d in p.iterdir() if d.is_dir() and d.name.startswith("iter_")])
+        return bool(iter_dirs) and (iter_dirs[-1] / _target_vtk).exists()
+
     if os.path.exists(registration_output_dir):
-        # Check if the directory contains subdirectories (registration results)
-        subdirs = [d for d in os.listdir(registration_output_dir) 
+        subdirs = [d for d in os.listdir(registration_output_dir)
                    if os.path.isdir(os.path.join(registration_output_dir, d))]
-        
-        if subdirs:
+        complete = [d for d in subdirs
+                    if _registration_output_exists(os.path.join(registration_output_dir, d))]
+
+        if complete and len(complete) == len(subdirs):
             print(f"✅ Registration results found in: {registration_output_dir}")
-            print(f"   Found {len(subdirs)} registered mesh result(s)")
+            print(f"   Found {len(complete)} registered mesh result(s)")
             print("   Skipping registration (results already exist)")
-            
-            # Create a mock results dictionary indicating success for found meshes
-            registration_results = {mesh_name: True for mesh_name in subdirs}
-            
-            # Verify results exist
+
+            registration_results = {mesh_name: True for mesh_name in complete}
             print("\nExisting registration results:")
-            for mesh_name in subdirs:
+            for mesh_name in complete:
                 print(f"  ✅ {mesh_name}")
-            
             return True, registration_results
+
+        if subdirs:
+            incomplete = set(subdirs) - set(complete)
+            print(f"⚠️  Registration output directory exists but {len(incomplete)} mesh(es) "
+                  f"are missing Deformetrica output files: {sorted(incomplete)}")
+            print("Re-running registration to complete missing results...")
     
     print("No existing registration results found. Starting Deformetrica registration...")
     print(f"Aligned template meshes directory: {directories['alignment_output_dir']}")

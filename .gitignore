@@ -1,1 +1,16 @@
 __pycache__/
+**/__pycache__/
+.vscode/
+
+# Generated pipeline outputs
+msk_morph/temp/*/
+msk_morph/template_mesh_registration/*.vtk
+msk_morph/template_warping_files/*.csv
+participant_data/*/target_geometry/vtk_files/
+participant_data/*/warping_files/
+participant_data/*/markers.xml
+participant_data/*/markers.trc
+participant_data/*/*.osim
+msk_morph/tests/fixtures/registration_output/
+msk_morph/tests/fixtures/registration_input/
+**/.pytest_cache/
